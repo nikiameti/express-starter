@@ -1,12 +1,9 @@
 const express = require('express');
-const router = require('./config/routes');
 const app = express();
 const port = 3000;
-const routes = require('./config/routes');
+const bootstrap = require('./config/bootstrap')();
 
-app.use('/',routes);
-
-
+app.use('/',bootstrap.getRoutes());
 
 
 app.listen(port, () => {
