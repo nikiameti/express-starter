@@ -1,7 +1,17 @@
+const JwtService = require("../services/JwtService")
+
 module.exports = function(req,res,next){
-    if(req.query.user == "1"){
-        next();
-    } else {
-        res.send("Unauthorized")
+    try{
+        if(req.headers.authorization){
+            let token = JwtService.decode(req.headers.authorization.split(" ")[1]);
+            req.user = token;
+            next()
+        } else {
+            throw new Error("Invalid authorization header")
+        }
+    } catch(e){
+        res.send({
+            error: e.message || "Unauthenticated" 
+        })
     }
 }
