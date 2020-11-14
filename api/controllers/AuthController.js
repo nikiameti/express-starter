@@ -9,6 +9,8 @@ module.exports = {
                 error:"You must provide username and password"
             })
         }
-
+    },
+    signUp: async (req,res)=>{
+        
     }
 }
