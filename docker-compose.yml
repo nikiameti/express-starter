@@ -1,0 +1,17 @@
+web:
+  build: .
+  volumes:
+    - ".:/usr/src/app"
+  ports:
+    - "80:4000"
+  environment: 
+    - DB_HOST:db
+  links:
+    - "db"
+
+db:
+  image: nikiameti/pinme-postgis
+  environment:
+    - POSTGRES_PASSWORD=mysecretpassword
+  ports:
+    - "5432:5432"

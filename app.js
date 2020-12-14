@@ -19,7 +19,7 @@ const Post = require('./api/models/Post');
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-
+  
 app.use(cors());
 app.use('/',bootstrap.getRoutes());
 

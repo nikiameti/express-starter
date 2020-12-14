@@ -8,7 +8,7 @@ const Database = function(){
 
     async function connect(){
         connection = new Sequelize('pinme', 'postgres', 'mysecretpassword', {
-            host: 'localhost',
+            host: process.env.DB_HOST,
             dialect: 'postgres',
             dialectOptions: {
               options: {
