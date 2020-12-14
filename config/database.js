@@ -3,7 +3,12 @@ const { Sequelize } = require('sequelize');
 const Database = function(){
     let connection = null;
     function getConection(){
-        return connection;
+        if(connection){
+          return connection;
+        } else {
+          return this.connect()
+        }
+        
     }
 
     async function connect(){
@@ -17,6 +22,7 @@ const Database = function(){
               }
             },
           });
+          return connection;
     }
     return {
         getConection:getConection,
